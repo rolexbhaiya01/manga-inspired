@@ -3,7 +3,14 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowUp, Zap, Target } from 'lucide-react';
+import { ArrowUp, Zap, Target, Calendar, BookOpen, TrendingUp, MessageCircle, Settings } from 'lucide-react';
+import { TrainingSplitsSection } from './toji/TrainingSplitsSection';
+import { ExerciseLibrary } from './toji/ExerciseLibrary';
+import { TrainingConcepts } from './toji/TrainingConcepts';
+import { ProgressTracking } from './toji/ProgressTracking';
+import { FAQSection } from './toji/FAQSection';
+import { ResourcesSection } from './toji/ResourcesSection';
+import { AIAssistant } from './toji/AIAssistant';
 
 interface TojiProgramProps {
   onBack: () => void;
@@ -30,6 +37,25 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
           </div>
           <div className="w-24"></div>
         </div>
+
+        {/* Safety Warning */}
+        <Card className="bg-gradient-to-r from-yellow-900/30 to-red-900/20 border-yellow-600/50">
+          <CardHeader>
+            <CardTitle className="text-yellow-400 flex items-center gap-2">
+              ⚠️ Safety Disclaimer
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-gray-300 mb-4">
+              This program is designed for experienced individuals. Consult with a healthcare provider 
+              before starting any new exercise program. Train within your limits and maintain proper form 
+              to prevent injury.
+            </p>
+            <p className="text-sm text-gray-400">
+              © Discipline Mentality. This content is for educational purposes only.
+            </p>
+          </CardContent>
+        </Card>
 
         {/* Program Overview */}
         <Card className="bg-gradient-to-r from-blue-900/20 to-blue-800/10 border-blue-600/50">
@@ -70,208 +96,65 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
           </CardContent>
         </Card>
 
-        {/* Training Splits */}
+        {/* Main Navigation Tabs */}
         <Tabs defaultValue="splits" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="splits">Training Splits</TabsTrigger>
-            <TabsTrigger value="concepts">Training Concepts</TabsTrigger>
-            <TabsTrigger value="progression">Progression Guide</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-7">
+            <TabsTrigger value="splits" className="flex items-center gap-1">
+              <Calendar className="w-4 h-4" />
+              <span className="hidden sm:inline">Splits</span>
+            </TabsTrigger>
+            <TabsTrigger value="exercises" className="flex items-center gap-1">
+              <BookOpen className="w-4 h-4" />
+              <span className="hidden sm:inline">Exercises</span>
+            </TabsTrigger>
+            <TabsTrigger value="concepts" className="flex items-center gap-1">
+              <Target className="w-4 h-4" />
+              <span className="hidden sm:inline">Concepts</span>
+            </TabsTrigger>
+            <TabsTrigger value="progress" className="flex items-center gap-1">
+              <TrendingUp className="w-4 h-4" />
+              <span className="hidden sm:inline">Progress</span>
+            </TabsTrigger>
+            <TabsTrigger value="faq" className="flex items-center gap-1">
+              <MessageCircle className="w-4 h-4" />
+              <span className="hidden sm:inline">FAQ</span>
+            </TabsTrigger>
+            <TabsTrigger value="resources" className="flex items-center gap-1">
+              <Settings className="w-4 h-4" />
+              <span className="hidden sm:inline">Resources</span>
+            </TabsTrigger>
+            <TabsTrigger value="ai" className="flex items-center gap-1">
+              <Zap className="w-4 h-4" />
+              <span className="hidden sm:inline">AI Assistant</span>
+            </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="splits" className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Split A */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-blue-400">Split A: High Intensity Minimalist</CardTitle>
-                  <p className="text-gray-400">3 Days/Week • Upper/Lower Focus</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 1: Upper Body</h4>
-                      <p className="text-sm text-gray-300">Heavy compound movements, pull-up focus</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 2: Lower Body</h4>
-                      <p className="text-sm text-gray-300">Squat and hinge patterns, explosive work</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 3: Full Body</h4>
-                      <p className="text-sm text-gray-300">Compound movements, functional patterns</p>
-                    </div>
-                  </div>
-                  <div className="pt-4 border-t border-gray-700">
-                    <h4 className="font-medium text-gray-300 mb-2">Best For:</h4>
-                    <ul className="text-sm text-gray-400 space-y-1">
-                      <li>• Limited training time</li>
-                      <li>• High work capacity</li>
-                      <li>• Advanced trainees</li>
-                    </ul>
-                  </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    Choose Split A
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Split B */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-blue-400">Split B: High Volume Body Part</CardTitle>
-                  <p className="text-gray-400">5 Days/Week • Specialized Focus</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 1: Back & Biceps</h4>
-                      <p className="text-sm text-gray-300">V-taper development focus</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 2: Chest & Triceps</h4>
-                      <p className="text-sm text-gray-300">Upper body mass and definition</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 3: Shoulders</h4>
-                      <p className="text-sm text-gray-300">Width and capping development</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 4: Legs</h4>
-                      <p className="text-sm text-gray-300">Lower body power and stability</p>
-                    </div>
-                    <div className="p-3 bg-blue-900/20 rounded">
-                      <h4 className="font-medium text-blue-400">Day 5: Arms & Core</h4>
-                      <p className="text-sm text-gray-300">Detail work and core strength</p>
-                    </div>
-                  </div>
-                  <div className="pt-4 border-t border-gray-700">
-                    <h4 className="font-medium text-gray-300 mb-2">Best For:</h4>
-                    <ul className="text-sm text-gray-400 space-y-1">
-                      <li>• Maximum muscle focus</li>
-                      <li>• More training time</li>
-                      <li>• Physique development</li>
-                    </ul>
-                  </div>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700">
-                    Choose Split B
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+          <TabsContent value="splits">
+            <TrainingSplitsSection />
           </TabsContent>
 
-          <TabsContent value="concepts" className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-blue-400">Training to Failure</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-900/20 rounded-lg">
-                      <h4 className="font-medium text-blue-400 mb-2">Technical Failure</h4>
-                      <p className="text-sm text-gray-300">
-                        When you can no longer maintain proper form. This is the safest approach 
-                        and should be your primary target for most exercises.
-                      </p>
-                    </div>
-                    <div className="p-4 bg-blue-900/20 rounded-lg">
-                      <h4 className="font-medium text-blue-400 mb-2">Absolute Failure</h4>
-                      <p className="text-sm text-gray-300">
-                        When you physically cannot complete another rep. Use sparingly and only 
-                        on isolation exercises or with proper spotting.
-                      </p>
-                    </div>
-                    <div className="p-4 bg-gray-700/30 rounded-lg">
-                      <h4 className="font-medium text-gray-300 mb-2">RPE Guidelines</h4>
-                      <div className="text-sm text-gray-400 space-y-1">
-                        <div>RPE 8: 2 reps in reserve</div>
-                        <div>RPE 9: 1 rep in reserve</div>
-                        <div>RPE 10: At failure</div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-blue-400">Warm-Up Protocol</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-4">
-                    <div className="p-4 bg-blue-900/20 rounded-lg">
-                      <h4 className="font-medium text-blue-400 mb-2">Dynamic Preparation</h4>
-                      <p className="text-sm text-gray-300">
-                        5-10 minutes of movement preparation including joint mobility, 
-                        activation exercises, and movement rehearsal.
-                      </p>
-                    </div>
-                    <div className="p-4 bg-blue-900/20 rounded-lg">
-                      <h4 className="font-medium text-blue-400 mb-2">Pyramid Sets</h4>
-                      <p className="text-sm text-gray-300">
-                        Gradually increase weight and decrease reps to reach your working weight:
-                        Empty bar → 50% → 70% → 85% → Working weight
-                      </p>
-                    </div>
-                    <div className="p-4 bg-gray-700/30 rounded-lg">
-                      <h4 className="font-medium text-gray-300 mb-2">Injury Prevention</h4>
-                      <p className="text-sm text-gray-400">
-                        Never skip warm-up. It's essential for performance and injury prevention.
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          <TabsContent value="exercises">
+            <ExerciseLibrary />
           </TabsContent>
 
-          <TabsContent value="progression" className="space-y-6">
-            <Card className="bg-gray-800/50 border-gray-700">
-              <CardHeader>
-                <CardTitle className="text-blue-400">4-Week Progression Cycle</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid md:grid-cols-4 gap-4">
-                  <div className="p-4 bg-blue-900/20 rounded-lg text-center">
-                    <h3 className="font-semibold text-blue-400 mb-2">Week 1</h3>
-                    <p className="text-sm text-gray-300 mb-2">Foundation</p>
-                    <div className="text-xs text-gray-400 space-y-1">
-                      <div>RPE 7-8</div>
-                      <div>Form focus</div>
-                      <div>Base volume</div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-blue-900/20 rounded-lg text-center">
-                    <h3 className="font-semibold text-blue-400 mb-2">Week 2</h3>
-                    <p className="text-sm text-gray-300 mb-2">Progression</p>
-                    <div className="text-xs text-gray-400 space-y-1">
-                      <div>RPE 8-9</div>
-                      <div>+5-10 lbs</div>
-                      <div>Intensity up</div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-blue-900/20 rounded-lg text-center">
-                    <h3 className="font-semibold text-blue-400 mb-2">Week 3</h3>
-                    <p className="text-sm text-gray-300 mb-2">Peak</p>
-                    <div className="text-xs text-gray-400 space-y-1">
-                      <div>RPE 9-10</div>
-                      <div>Max effort</div>
-                      <div>Peak volume</div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-gray-700/30 rounded-lg text-center">
-                    <h3 className="font-semibold text-gray-300 mb-2">Week 4</h3>
-                    <p className="text-sm text-gray-400 mb-2">Deload</p>
-                    <div className="text-xs text-gray-500 space-y-1">
-                      <div>RPE 6-7</div>
-                      <div>-20% volume</div>
-                      <div>Recovery</div>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <TabsContent value="concepts">
+            <TrainingConcepts />
+          </TabsContent>
+
+          <TabsContent value="progress">
+            <ProgressTracking />
+          </TabsContent>
+
+          <TabsContent value="faq">
+            <FAQSection />
+          </TabsContent>
+
+          <TabsContent value="resources">
+            <ResourcesSection />
+          </TabsContent>
+
+          <TabsContent value="ai">
+            <AIAssistant />
           </TabsContent>
         </Tabs>
       </div>
