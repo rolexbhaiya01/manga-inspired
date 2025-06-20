@@ -1,15 +1,83 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Heart, Dumbbell, Calendar } from 'lucide-react';
+import { Heart, Dumbbell, Calendar, AlertTriangle } from 'lucide-react';
+import { WorkoutRoutineSection } from './sungjinwoo/WorkoutRoutineSection';
+import { ExerciseLibrary } from './sungjinwoo/ExerciseLibrary';
+import { ProgressTracking } from './sungjinwoo/ProgressTracking';
+import { AIAssistant } from './sungjinwoo/AIAssistant';
+import { ContactSupport } from './sungjinwoo/ContactSupport';
 
 interface SungJinWooProgramProps {
   onBack: () => void;
 }
 
 export const SungJinWooProgram = ({ onBack }: SungJinWooProgramProps) => {
+  const [hasAcceptedDisclaimer, setHasAcceptedDisclaimer] = useState(false);
+
+  if (!hasAcceptedDisclaimer) {
+    return (
+      <div className="min-h-screen p-6 flex items-center justify-center">
+        <Card className="max-w-4xl bg-gradient-to-r from-purple-900/20 to-purple-800/10 border-purple-600/50">
+          <CardHeader>
+            <CardTitle className="text-2xl text-purple-400 flex items-center gap-2">
+              <AlertTriangle className="w-6 h-6" />
+              Copyright & Safety Disclaimer
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-4">
+              <div className="p-4 bg-purple-900/30 rounded-lg">
+                <h3 className="font-semibold text-purple-400 mb-2">Copyright Notice</h3>
+                <p className="text-gray-300 text-sm">
+                  This workout program is based on the "Sung Jin Woo Workout" by @aurachad and @raunak_gupta_23_. 
+                  This content is provided for educational purposes and free distribution as stated in the original e-book.
+                </p>
+              </div>
+              
+              <div className="p-4 bg-red-900/30 rounded-lg border border-red-600/50">
+                <h3 className="font-semibold text-red-400 mb-2">Important Safety Warning</h3>
+                <ul className="text-gray-300 text-sm space-y-1">
+                  <li>• Consult with a healthcare professional before starting any new exercise program</li>
+                  <li>• Listen to your body and stop if you experience pain or discomfort</li>
+                  <li>• Proper form is more important than heavy weights or high repetitions</li>
+                  <li>• Stay hydrated and ensure adequate rest between workouts</li>
+                  <li>• This program is for educational purposes only and not medical advice</li>
+                </ul>
+              </div>
+              
+              <div className="p-4 bg-purple-900/30 rounded-lg">
+                <h3 className="font-semibold text-purple-400 mb-2">Program Philosophy</h3>
+                <p className="text-gray-300 text-sm">
+                  This comprehensive program is designed to help you achieve a lean, aesthetic physique inspired by Sung Jin Woo. 
+                  It offers flexible workout options for both gym and home environments, combined with a detailed nutrition plan 
+                  for optimal results.
+                </p>
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <Button 
+                variant="ghost" 
+                onClick={onBack}
+                className="text-gray-400 hover:text-white"
+              >
+                ← Back to Programs
+              </Button>
+              <Button 
+                onClick={() => setHasAcceptedDisclaimer(true)}
+                className="bg-purple-600 hover:bg-purple-700 flex-1"
+              >
+                I Understand and Accept - Continue to Program
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen p-6">
       <div className="max-w-6xl mx-auto space-y-8">
@@ -71,152 +139,22 @@ export const SungJinWooProgram = ({ onBack }: SungJinWooProgramProps) => {
         </Card>
 
         {/* Program Content */}
-        <Tabs defaultValue="workout-plans" className="w-full">
-          <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="workout-plans">Workout Plans</TabsTrigger>
+        <Tabs defaultValue="workout-routine" className="w-full">
+          <TabsList className="grid w-full grid-cols-6">
+            <TabsTrigger value="workout-routine">Workout Routine</TabsTrigger>
+            <TabsTrigger value="exercise-library">Exercise Library</TabsTrigger>
             <TabsTrigger value="diet-plan">Diet Plan</TabsTrigger>
-            <TabsTrigger value="guidelines">Guidelines</TabsTrigger>
+            <TabsTrigger value="progress-tracking">Progress Tracking</TabsTrigger>
+            <TabsTrigger value="ai-assistant">AI Assistant</TabsTrigger>
+            <TabsTrigger value="contact">Contact</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="workout-plans" className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Gym Plan */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-purple-400">With Equipment & Gym</CardTitle>
-                  <p className="text-gray-400">Full gym access plan</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Monday - Upper Body</h4>
-                      <div className="text-sm text-gray-300 space-y-1">
-                        <div className="flex justify-between">
-                          <span>Bench Press</span>
-                          <span className="text-purple-400">4×8-10</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Pull-ups</span>
-                          <span className="text-purple-400">4×6-8</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Shoulder Press</span>
-                          <span className="text-purple-400">3×10-12</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Rows</span>
-                          <span className="text-purple-400">3×10-12</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Tuesday - Lower Body</h4>
-                      <div className="text-sm text-gray-300 space-y-1">
-                        <div className="flex justify-between">
-                          <span>Squats</span>
-                          <span className="text-purple-400">4×8-10</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Deadlifts</span>
-                          <span className="text-purple-400">4×6-8</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Lunges</span>
-                          <span className="text-purple-400">3×12 each</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Calf Raises</span>
-                          <span className="text-purple-400">4×15-20</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Schedule</h4>
-                      <div className="text-sm text-gray-300">
-                        <p>Monday/Thursday: Upper Body</p>
-                        <p>Tuesday/Friday: Lower Body</p>
-                        <p>Wednesday: Core & Cardio</p>
-                        <p>Weekend: Active Rest</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                    View Full Gym Plan
-                  </Button>
-                </CardContent>
-              </Card>
+          <TabsContent value="workout-routine">
+            <WorkoutRoutineSection />
+          </TabsContent>
 
-              {/* Bodyweight Plan */}
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-purple-400">Without Equipment & Gym</CardTitle>
-                  <p className="text-gray-400">Bodyweight & minimal equipment</p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Monday - Upper Focus</h4>
-                      <div className="text-sm text-gray-300 space-y-1">
-                        <div className="flex justify-between">
-                          <span>Push-ups</span>
-                          <span className="text-purple-400">4×12-15</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Pike Push-ups</span>
-                          <span className="text-purple-400">3×8-10</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Tricep Dips</span>
-                          <span className="text-purple-400">3×10-12</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Plank</span>
-                          <span className="text-purple-400">3×60s</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Tuesday - Lower Focus</h4>
-                      <div className="text-sm text-gray-300 space-y-1">
-                        <div className="flex justify-between">
-                          <span>Bodyweight Squats</span>
-                          <span className="text-purple-400">4×15-20</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Lunges</span>
-                          <span className="text-purple-400">3×12 each</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Single Leg Glute Bridges</span>
-                          <span className="text-purple-400">3×10 each</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Calf Raises</span>
-                          <span className="text-purple-400">4×20</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400 mb-2">Progression Tips</h4>
-                      <div className="text-sm text-gray-300">
-                        <p>Increase reps or add pauses</p>
-                        <p>Use household items for resistance</p>
-                        <p>Focus on time under tension</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                    View Full Home Plan
-                  </Button>
-                </CardContent>
-              </Card>
-            </div>
+          <TabsContent value="exercise-library">
+            <ExerciseLibrary />
           </TabsContent>
 
           <TabsContent value="diet-plan" className="space-y-6">
@@ -310,74 +248,16 @@ export const SungJinWooProgram = ({ onBack }: SungJinWooProgramProps) => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="guidelines" className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-purple-400">Training Guidelines</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400">Progression Principles</h4>
-                      <ul className="text-sm text-gray-300 mt-2 space-y-1">
-                        <li>• Progressive overload every week</li>
-                        <li>• Focus on form over weight</li>
-                        <li>• Rest 48-72 hours between same muscle groups</li>
-                        <li>• Listen to your body and adjust intensity</li>
-                      </ul>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400">Recovery & Rest</h4>
-                      <ul className="text-sm text-gray-300 mt-2 space-y-1">
-                        <li>• 7-9 hours of quality sleep</li>
-                        <li>• Active recovery on rest days</li>
-                        <li>• Stretch after every workout</li>
-                        <li>• Take a full rest day weekly</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+          <TabsContent value="progress-tracking">
+            <ProgressTracking />
+          </TabsContent>
 
-              <Card className="bg-gray-800/50 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-purple-400">Nutrition Guidelines</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400">Macronutrient Targets</h4>
-                      <div className="text-sm text-gray-300 mt-2 space-y-1">
-                        <div className="flex justify-between">
-                          <span>Protein:</span>
-                          <span className="text-purple-400">1.2-1.6g per kg body weight</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Carbs:</span>
-                          <span className="text-purple-400">2-3g per kg body weight</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Fats:</span>
-                          <span className="text-purple-400">0.8-1g per kg body weight</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="p-3 bg-purple-900/20 rounded">
-                      <h4 className="font-medium text-purple-400">Hydration & Timing</h4>
-                      <ul className="text-sm text-gray-300 mt-2 space-y-1">
-                        <li>• Pre-workout: Light meal 1-2 hours before</li>
-                        <li>• Post-workout: Protein within 30 minutes</li>
-                        <li>• Stay hydrated throughout the day</li>
-                        <li>• Avoid eating 2 hours before bedtime</li>
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          <TabsContent value="ai-assistant">
+            <AIAssistant />
+          </TabsContent>
+
+          <TabsContent value="contact">
+            <ContactSupport />
           </TabsContent>
         </Tabs>
       </div>
