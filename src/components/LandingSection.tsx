@@ -15,6 +15,14 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
 
   const canProceed = acceptedDisclaimer && acceptedSafety;
 
+  const handleDisclaimerChange = (checked: boolean | "indeterminate") => {
+    setAcceptedDisclaimer(checked === true);
+  };
+
+  const handleSafetyChange = (checked: boolean | "indeterminate") => {
+    setAcceptedSafety(checked === true);
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="max-w-4xl w-full space-y-8">
@@ -97,7 +105,7 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
                 <Checkbox 
                   id="disclaimer" 
                   checked={acceptedDisclaimer}
-                  onCheckedChange={setAcceptedDisclaimer}
+                  onCheckedChange={handleDisclaimerChange}
                 />
                 <label htmlFor="disclaimer" className="text-sm font-medium">
                   I understand and acknowledge this disclaimer
@@ -128,7 +136,7 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
                 <Checkbox 
                   id="safety" 
                   checked={acceptedSafety}
-                  onCheckedChange={setAcceptedSafety}
+                  onCheckedChange={handleSafetyChange}
                 />
                 <label htmlFor="safety" className="text-sm font-medium">
                   I understand the risks and safety requirements
