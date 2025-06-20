@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,89 +7,87 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Dark, intense background scheme */
+    --background: 220 15% 8%;  /* Deep charcoal */
+    --foreground: 0 0% 95%;    /* Crisp white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 15% 12%;       /* Slightly lighter charcoal */
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sharp, impactful primary colors */
+    --primary: 0 84% 60%;      /* Vibrant red for intensity */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Muted secondary for balance */
+    --secondary: 220 15% 18%;  /* Dark grey */
+    --secondary-foreground: 0 0% 88%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 15% 15%;      /* Darker muted */
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Electric blue accent */
+    --accent: 210 100% 56%;    /* Electric blue */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Subtle borders and inputs */
+    --border: 220 15% 20%;
+    --input: 220 15% 16%;
+    --ring: 0 84% 60%;         /* Red focus ring */
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;        /* Minimal rounding */
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    /* Sidebar colors matching the dark theme */
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 0 84% 60%;
     --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 0 0% 88%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 0 84% 60%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Additional gym-focused colors */
+    --success: 142 76% 36%;    /* Strong green */
+    --warning: 38 92% 50%;     /* Bright orange */
+    --electric: 210 100% 56%;  /* Electric blue */
+    --neon: 154 100% 50%;      /* Bright neon green */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Dark mode uses the same intense scheme */
+    --background: 220 15% 8%;
+    --foreground: 0 0% 95%;
+    --card: 220 15% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 84% 60%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 0 0% 88%;
+    --muted: 220 15% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 210 100% 56%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 20%;
+    --input: 220 15% 16%;
+    --ring: 0 84% 60%;
+    --sidebar-background: 220 15% 10%;
+    --sidebar-foreground: 0 0% 88%;
+    --sidebar-primary: 0 84% 60%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 15% 15%;
+    --sidebar-accent-foreground: 0 0% 88%;
+    --sidebar-border: 220 15% 18%;
+    --sidebar-ring: 0 84% 60%;
   }
 }
 
@@ -99,5 +98,149 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Strong, readable typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  /* Ensure high contrast for readability */
+  p, span, div {
+    @apply text-foreground;
+  }
+}
+
+@layer components {
+  /* Sharp, defined button styles */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 
+           px-6 py-3 rounded-md font-semibold tracking-wide
+           transition-all duration-200 border-0;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90
+           px-6 py-3 rounded-md font-semibold tracking-wide
+           transition-all duration-200 border-0;
+  }
+
+  /* Sharp card styles */
+  .card-intense {
+    @apply bg-card border border-border rounded-md
+           shadow-lg backdrop-blur-sm;
+  }
+
+  /* Progress indicators with electric accent */
+  .progress-electric {
+    @apply bg-electric/20 border border-electric/50 rounded-md;
+  }
+
+  /* Workout section styling */
+  .workout-section {
+    @apply bg-card/50 border border-border/50 rounded-md p-6
+           backdrop-blur-sm;
+  }
+
+  /* High-contrast text for important information */
+  .text-intense {
+    @apply text-foreground font-semibold;
+  }
+
+  .text-accent-bright {
+    @apply text-accent font-medium;
+  }
+
+  /* Clean separation lines */
+  .separator-sharp {
+    @apply border-t border-border w-full;
+  }
+
+  /* Minimalist icons */
+  .icon-minimal {
+    @apply w-5 h-5 stroke-2;
+  }
+
+  /* Navigation styling */
+  .nav-clean {
+    @apply bg-card/80 backdrop-blur-md border-b border-border/50;
+  }
+
+  /* Form elements with sharp design */
+  .input-clean {
+    @apply bg-input border border-border rounded-md px-4 py-2
+           text-foreground placeholder:text-muted-foreground
+           focus:ring-2 focus:ring-ring focus:border-transparent;
+  }
+
+  /* Status indicators */
+  .status-success {
+    @apply bg-green-500/20 border border-green-500/50 text-green-400;
+  }
+
+  .status-warning {
+    @apply bg-orange-500/20 border border-orange-500/50 text-orange-400;
+  }
+
+  .status-electric {
+    @apply bg-blue-500/20 border border-blue-500/50 text-blue-400;
+  }
+}
+
+@layer utilities {
+  /* Custom background gradients for intensity */
+  .bg-intensity-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  }
+
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+  }
+
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--electric)) 100%);
+  }
+
+  /* Text gradients for headers */
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-electric {
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--electric)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Sharp hover effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/25;
+  }
+
+  /* Focus states for accessibility */
+  .focus-intense {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
   }
 }
