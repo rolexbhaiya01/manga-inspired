@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,10 +33,10 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
             <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center mb-4">
               <Dumbbell className="w-8 h-8 text-black" />
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-              Toji Fushiguro Training
+            <h1 className="title-ascetic text-3xl md:text-4xl font-light tracking-widest text-foreground">
+              TOJI FUSHIGURO TRAINING
             </h1>
-            <p className="text-lg text-muted-foreground mt-2">V-Taper & High Intensity</p>
+            <p className="accent-ascetic text-lg mt-2">V-TAPER & HIGH INTENSITY</p>
           </div>
           <div className="w-24"></div>
         </div>
@@ -64,9 +63,9 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
         {/* Program Overview */}
         <Card className="fitness-card">
           <CardHeader>
-            <CardTitle className="text-2xl text-cyan-500 flex items-center gap-2">
+            <CardTitle className="text-2xl accent-ascetic flex items-center gap-2">
               <Target className="w-6 h-6" />
-              Program Philosophy
+              PROGRAM PHILOSOPHY
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -78,21 +77,21 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
               <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
                   <Target className="w-5 h-5 text-cyan-500" />
-                  <h3 className="font-semibold text-cyan-500">V-Taper Focus</h3>
+                  <h3 className="accent-ascetic font-semibold text-cyan-500">V-TAPER FOCUS</h3>
                 </div>
                 <p className="text-muted-foreground">Wide shoulders, narrow waist for that iconic silhouette</p>
               </div>
               <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
                   <Zap className="w-5 h-5 text-cyan-500" />
-                  <h3 className="font-semibold text-cyan-500">High RPE Training</h3>
+                  <h3 className="accent-ascetic font-semibold text-cyan-500">HIGH RPE TRAINING</h3>
                 </div>
                 <p className="text-muted-foreground">Pushing close to failure for maximum adaptation</p>
               </div>
               <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
                   <Dumbbell className="w-5 h-5 text-cyan-500" />
-                  <h3 className="font-semibold text-cyan-500">Functional Strength</h3>
+                  <h3 className="accent-ascetic font-semibold text-cyan-500">FUNCTIONAL STRENGTH</h3>
                 </div>
                 <p className="text-muted-foreground">Real-world applicable strength and mobility</p>
               </div>

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
@@ -95,15 +94,15 @@ export const FAQSection = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-blue-400">Frequently Asked Questions</h2>
+      <h2 className="accent-ascetic text-2xl font-bold text-cyan-400">FREQUENTLY ASKED QUESTIONS</h2>
       
       <div className="space-y-6">
         {faqs.map((section, index) => (
           <Card key={index} className="bg-gray-800/50 border-gray-700">
             <CardHeader>
-              <CardTitle className="text-blue-400 flex items-center gap-2">
+              <CardTitle className="accent-ascetic text-cyan-400 flex items-center gap-2">
                 {section.icon}
-                {section.category}
+                {section.category.toUpperCase()}
                 <Badge className={`ml-auto ${getCategoryColor(section.category)} text-white`}>
                   {section.questions.length} Q&A
                 </Badge>
@@ -113,7 +112,7 @@ export const FAQSection = () => {
               <Accordion type="single" collapsible className="w-full">
                 {section.questions.map((faq, faqIndex) => (
                   <AccordionItem key={faqIndex} value={`${index}-${faqIndex}`}>
-                    <AccordionTrigger className="text-left text-gray-300 hover:text-blue-400">
+                    <AccordionTrigger className="text-left text-gray-300 hover:text-cyan-400">
                       {faq.question}
                     </AccordionTrigger>
                     <AccordionContent className="text-gray-400 leading-relaxed">
@@ -128,14 +127,14 @@ export const FAQSection = () => {
       </div>
 
       {/* Quick Tips */}
-      <Card className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border-blue-600/50">
+      <Card className="bg-gradient-to-r from-cyan-900/20 to-gray-900/20 border-cyan-600/50">
         <CardHeader>
-          <CardTitle className="text-blue-400">💡 Quick Success Tips</CardTitle>
+          <CardTitle className="accent-ascetic text-cyan-400">💡 QUICK SUCCESS TIPS</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <h4 className="font-medium text-blue-400">Training</h4>
+              <h4 className="accent-ascetic font-medium text-cyan-400">TRAINING</h4>
               <ul className="text-sm text-gray-300 space-y-1">
                 <li>• Consistency beats perfection</li>
                 <li>• Form over ego lifting</li>
@@ -144,7 +143,7 @@ export const FAQSection = () => {
               </ul>
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-blue-400">Recovery</h4>
+              <h4 className="accent-ascetic font-medium text-cyan-400">RECOVERY</h4>
               <ul className="text-sm text-gray-300 space-y-1">
                 <li>• Prioritize sleep quality</li>
                 <li>• Stay hydrated</li>

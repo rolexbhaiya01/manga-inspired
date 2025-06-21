@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -104,7 +103,7 @@ export const ExerciseLibrary = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-blue-400">Exercise Library</h2>
+        <h2 className="accent-ascetic text-2xl font-bold text-cyan-500">EXERCISE LIBRARY</h2>
         <div className="relative max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
           <Input
@@ -118,23 +117,23 @@ export const ExerciseLibrary = () => {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredExercises.map((exercise, index) => (
-          <Card key={index} className="bg-gray-800/50 border-gray-700 hover:border-blue-500 transition-all">
+          <Card key={index} className="bg-gray-800/50 border-gray-700 hover:border-cyan-500 transition-all">
             <CardHeader>
               <div className="flex items-start justify-between">
                 <div>
-                  <CardTitle className="text-lg text-blue-400">{exercise.name}</CardTitle>
+                  <CardTitle className="accent-ascetic text-lg text-cyan-400">{exercise.name.toUpperCase()}</CardTitle>
                   <Badge className={`mt-2 ${getCategoryColor(exercise.category)} text-white`}>
-                    {exercise.category}
+                    {exercise.category.toUpperCase()}
                   </Badge>
                 </div>
-                <button className="p-2 rounded-full bg-blue-600 hover:bg-blue-700 transition-colors">
+                <button className="p-2 rounded-full bg-cyan-600 hover:bg-cyan-700 transition-colors">
                   <Play className="w-4 h-4 text-white" />
                 </button>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="font-medium text-gray-300 mb-2">Muscles Worked:</h4>
+                <h4 className="accent-ascetic font-medium text-gray-300 mb-2">MUSCLES WORKED:</h4>
                 <div className="flex flex-wrap gap-1">
                   {exercise.muscles.map((muscle, idx) => (
                     <Badge key={idx} variant="outline" className="text-xs">
@@ -145,15 +144,15 @@ export const ExerciseLibrary = () => {
               </div>
               
               <div>
-                <h4 className="font-medium text-gray-300 mb-2">Instructions:</h4>
+                <h4 className="accent-ascetic font-medium text-gray-300 mb-2">INSTRUCTIONS:</h4>
                 <p className="text-sm text-gray-400">{exercise.description}</p>
               </div>
               
               <button 
-                className="w-full text-left text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                className="w-full text-left text-sm accent-ascetic text-cyan-400 hover:text-cyan-300 transition-colors"
                 onClick={() => window.open(exercise.videoUrl, '_blank')}
               >
-                Watch Tutorial Video →
+                WATCH TUTORIAL VIDEO →
               </button>
             </CardContent>
           </Card>

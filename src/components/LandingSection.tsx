@@ -31,24 +31,24 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
           <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center mb-6">
             <Dumbbell className="w-8 h-8 text-black" />
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
+          <h1 className="title-ascetic text-4xl md:text-6xl font-light tracking-widest text-foreground">
             ANIME FITNESS
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground">
-            Train Like Your Favorite Characters
+          <p className="accent-ascetic text-xl md:text-2xl">
+            TRAIN LIKE YOUR FAVORITE CHARACTERS
           </p>
           <div className="flex justify-center items-center gap-12 text-muted-foreground">
             <div className="flex items-center gap-3">
               <Dumbbell className="w-5 h-5 text-cyan-500" />
-              <span>Strength</span>
+              <span className="accent-ascetic">STRENGTH</span>
             </div>
             <div className="flex items-center gap-3">
               <Users className="w-5 h-5 text-cyan-500" />
-              <span>Dedication</span>
+              <span className="accent-ascetic">DEDICATION</span>
             </div>
             <div className="flex items-center gap-3">
               <Target className="w-5 h-5 text-cyan-500" />
-              <span>Results</span>
+              <span className="accent-ascetic">RESULTS</span>
             </div>
           </div>
         </div>
@@ -61,9 +61,9 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
           <CardContent className="text-muted-foreground space-y-6">
             <p>
               Embark on a revolutionary fitness experience inspired by iconic anime characters: 
-              <span className="text-cyan-500 font-medium"> Baki Hanma</span>, 
-              <span className="text-cyan-500 font-medium"> Toji Fushiguro</span>, and 
-              <span className="text-cyan-500 font-medium"> Sung Jin Woo</span>.
+              <span className="highlight-ascetic"> BAKI HANMA</span>, 
+              <span className="highlight-ascetic"> TOJI FUSHIGURO</span>, and 
+              <span className="highlight-ascetic"> SUNG JIN WOO</span>.
             </p>
             <p>
               This platform provides you with the ultimate choice and guidance through intense strength training, 
@@ -71,15 +71,15 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="stat-card">
-                <h3 className="font-semibold text-foreground mb-2">Baki Hanma</h3>
+                <h3 className="accent-ascetic font-semibold text-foreground mb-2">BAKI HANMA</h3>
                 <p className="text-sm text-muted-foreground">Overall muscle development & boxing athleticism</p>
               </div>
               <div className="stat-card">
-                <h3 className="font-semibold text-foreground mb-2">Toji Fushiguro</h3>
+                <h3 className="accent-ascetic font-semibold text-foreground mb-2">TOJI FUSHIGURO</h3>
                 <p className="text-sm text-muted-foreground">V-taper development & high-intensity strength</p>
               </div>
               <div className="stat-card">
-                <h3 className="font-semibold text-foreground mb-2">Sung Jin Woo</h3>
+                <h3 className="accent-ascetic font-semibold text-foreground mb-2">SUNG JIN WOO</h3>
                 <p className="text-sm text-muted-foreground">Lean aesthetic body & flexible training</p>
               </div>
             </div>
@@ -155,9 +155,9 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
             onClick={onAcceptTerms}
             disabled={!canProceed}
             size="lg"
-            className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
+            className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed accent-ascetic"
           >
-            Enter the Training Ground
+            ENTER THE TRAINING GROUND
           </Button>
         </div>
       </div>

@@ -77,7 +77,9 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			fontFamily: {
-				sans: ['Inter', 'Segoe UI', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+				mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'monospace'],
+				ascetic: ['JetBrains Mono', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Courier New', 'monospace'],
 			},
 			fontWeight: {
 				'extralight': '200',
@@ -90,6 +92,7 @@ export default {
 			letterSpacing: {
 				'wide': '0.025em',
 				'wider': '0.05em',
+				'widest': '0.1em',
 			},
 			keyframes: {
 				'accordion-down': {

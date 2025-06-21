@@ -1,4 +1,5 @@
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -91,14 +92,14 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 400;
   }
 
   /* Clean, modern typography */
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
-    font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', 'system-ui', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
   h1 {
@@ -117,6 +118,24 @@
   p, span, div {
     @apply text-foreground;
     font-weight: 400;
+  }
+
+  /* Ascetic highlighted text styling */
+  .highlight-ascetic {
+    @apply font-ascetic font-light tracking-widest text-cyan-400;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.15em;
+  }
+
+  .title-ascetic {
+    @apply font-ascetic font-light tracking-widest;
+    font-variant-caps: all-small-caps;
+    letter-spacing: 0.1em;
+  }
+
+  .accent-ascetic {
+    @apply font-ascetic font-normal tracking-wider text-cyan-500;
+    letter-spacing: 0.08em;
   }
 }
 
@@ -232,5 +251,10 @@
   /* Glass effect */
   .glass {
     @apply backdrop-blur-md bg-card/80 border border-border/50;
+  }
+
+  /* Ascetic text utilities */
+  .font-ascetic {
+    font-family: 'JetBrains Mono', 'SF Mono', Monaco, Inconsolata, 'Roboto Mono', 'Courier New', monospace;
   }
 }
