@@ -62,6 +62,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Fitness app specific colors
+				cyan: {
+					400: '#22d3ee',
+					500: '#06b6d4',
+					600: '#0891b2',
+					700: '#0e7490'
 				}
 			},
 			borderRadius: {
@@ -77,6 +84,8 @@ export default {
 				'light': '300',
 				'normal': '400',
 				'medium': '500',
+				'semibold': '600',
+				'bold': '700',
 			},
 			letterSpacing: {
 				'wide': '0.025em',

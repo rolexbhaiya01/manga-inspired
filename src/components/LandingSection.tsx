@@ -24,75 +24,78 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-8">
+    <div className="min-h-screen flex items-center justify-center p-8 bg-background">
       <div className="max-w-4xl w-full space-y-12">
-        {/* Header - Pure white text on black */}
+        {/* Header */}
         <div className="text-center space-y-6">
-          <h1 className="text-5xl md:text-7xl font-extralight tracking-wider text-foreground">
+          <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center mb-6">
+            <Dumbbell className="w-8 h-8 text-black" />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground">
             ANIME FITNESS
           </h1>
-          <p className="text-xl md:text-2xl font-light text-muted-foreground">
+          <p className="text-xl md:text-2xl text-muted-foreground">
             Train Like Your Favorite Characters
           </p>
           <div className="flex justify-center items-center gap-12 text-muted-foreground">
             <div className="flex items-center gap-3">
-              <Dumbbell className="w-5 h-5 stroke-1" />
-              <span className="font-light">Strength</span>
+              <Dumbbell className="w-5 h-5 text-cyan-500" />
+              <span>Strength</span>
             </div>
             <div className="flex items-center gap-3">
-              <Users className="w-5 h-5 stroke-1" />
-              <span className="font-light">Dedication</span>
+              <Users className="w-5 h-5 text-cyan-500" />
+              <span>Dedication</span>
             </div>
             <div className="flex items-center gap-3">
-              <Target className="w-5 h-5 stroke-1" />
-              <span className="font-light">Results</span>
+              <Target className="w-5 h-5 text-cyan-500" />
+              <span>Results</span>
             </div>
           </div>
         </div>
 
-        {/* App Overview - Minimal card */}
-        <Card className="bg-card border-border">
+        {/* App Overview */}
+        <Card className="fitness-card">
           <CardHeader>
-            <CardTitle className="text-2xl font-light text-foreground">Welcome to Your Ultimate Fitness Journey</CardTitle>
+            <CardTitle className="text-2xl font-semibold text-foreground">Welcome to Your Ultimate Fitness Journey</CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground space-y-6 font-light">
+          <CardContent className="text-muted-foreground space-y-6">
             <p>
               Embark on a revolutionary fitness experience inspired by iconic anime characters: 
-              <span className="text-foreground font-normal"> Baki Hanma</span>, 
-              <span className="text-foreground font-normal"> Toji Fushiguro</span>, and 
-              <span className="text-foreground font-normal"> Sung Jin Woo</span>.
+              <span className="text-cyan-500 font-medium"> Baki Hanma</span>, 
+              <span className="text-cyan-500 font-medium"> Toji Fushiguro</span>, and 
+              <span className="text-cyan-500 font-medium"> Sung Jin Woo</span>.
             </p>
             <p>
               This platform provides you with the ultimate choice and guidance through intense strength training, 
               weightlifting, calisthenics, and specialized drills to help you sculpt your dream physique and maximize your gains.
             </p>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="text-center p-6 border border-border bg-card">
-                <h3 className="font-light text-foreground mb-2">Baki Hanma</h3>
-                <p className="text-sm text-muted-foreground font-light">Overall muscle development & boxing athleticism</p>
+              <div className="stat-card">
+                <h3 className="font-semibold text-foreground mb-2">Baki Hanma</h3>
+                <p className="text-sm text-muted-foreground">Overall muscle development & boxing athleticism</p>
               </div>
-              <div className="text-center p-6 border border-border bg-card">
-                <h3 className="font-light text-foreground mb-2">Toji Fushiguro</h3>
-                <p className="text-sm text-muted-foreground font-light">V-taper development & high-intensity strength</p>
+              <div className="stat-card">
+                <h3 className="font-semibold text-foreground mb-2">Toji Fushiguro</h3>
+                <p className="text-sm text-muted-foreground">V-taper development & high-intensity strength</p>
               </div>
-              <div className="text-center p-6 border border-border bg-card">
-                <h3 className="font-light text-foreground mb-2">Sung Jin Woo</h3>
-                <p className="text-sm text-muted-foreground font-light">Lean aesthetic body & flexible training</p>
+              <div className="stat-card">
+                <h3 className="font-semibold text-foreground mb-2">Sung Jin Woo</h3>
+                <p className="text-sm text-muted-foreground">Lean aesthetic body & flexible training</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Disclaimers - Minimal styling */}
+        {/* Disclaimers */}
         <div className="space-y-8">
-          <Card className="bg-card border-border">
+          <Card className="fitness-card">
             <CardHeader>
-              <CardTitle className="text-foreground font-light flex items-center gap-3">
-                <AlertTriangle className="w-5 h-5 stroke-1" />
+              <CardTitle className="text-foreground font-semibold flex items-center gap-3">
+                <AlertTriangle className="w-5 h-5 text-cyan-500" />
                 Copyright Disclaimer
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-muted-foreground space-y-4 font-light">
+            <CardContent className="text-muted-foreground space-y-4">
               <p className="text-sm">
                 This fitness application is inspired by anime/manga characters for motivational purposes only. 
                 All character names, references, and inspirations are the property of their respective creators and publishers.
@@ -107,22 +110,22 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
                   checked={acceptedDisclaimer}
                   onCheckedChange={handleDisclaimerChange}
                 />
-                <label htmlFor="disclaimer" className="text-sm font-light">
+                <label htmlFor="disclaimer" className="text-sm">
                   I understand and acknowledge this disclaimer
                 </label>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-card border-border">
+          <Card className="fitness-card">
             <CardHeader>
-              <CardTitle className="text-foreground font-light flex items-center gap-3">
-                <AlertTriangle className="w-5 h-5 stroke-1" />
+              <CardTitle className="text-foreground font-semibold flex items-center gap-3">
+                <AlertTriangle className="w-5 h-5 text-cyan-500" />
                 Safety Warning & Medical Disclaimer
               </CardTitle>
             </CardHeader>
-            <CardContent className="text-muted-foreground space-y-4 font-light">
-              <p className="text-sm font-normal">
+            <CardContent className="text-muted-foreground space-y-4">
+              <p className="text-sm font-medium text-foreground">
                 IMPORTANT: Consult your healthcare provider before starting any exercise program.
               </p>
               <ul className="text-sm space-y-2 list-disc list-inside">
@@ -138,7 +141,7 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
                   checked={acceptedSafety}
                   onCheckedChange={handleSafetyChange}
                 />
-                <label htmlFor="safety" className="text-sm font-light">
+                <label htmlFor="safety" className="text-sm">
                   I understand the risks and safety requirements
                 </label>
               </div>
@@ -146,13 +149,13 @@ export const LandingSection = ({ onAcceptTerms }: LandingSectionProps) => {
           </Card>
         </div>
 
-        {/* Proceed Button - Minimal design */}
+        {/* Proceed Button */}
         <div className="text-center">
           <Button 
             onClick={onAcceptTerms}
             disabled={!canProceed}
             size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/80 px-12 py-4 font-light tracking-wide border border-border disabled:opacity-30 disabled:cursor-not-allowed"
+            className="btn-primary disabled:opacity-30 disabled:cursor-not-allowed"
           >
             Enter the Training Ground
           </Button>

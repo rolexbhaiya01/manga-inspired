@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowUp, Zap, Target, Calendar, BookOpen, TrendingUp, MessageCircle, Settings } from 'lucide-react';
+import { ArrowLeft, Dumbbell, Zap, Target, Calendar, BookOpen, TrendingUp, MessageCircle, Settings } from 'lucide-react';
 import { TrainingSplitsSection } from './toji/TrainingSplitsSection';
 import { ExerciseLibrary } from './toji/ExerciseLibrary';
 import { TrainingConcepts } from './toji/TrainingConcepts';
@@ -18,79 +18,83 @@ interface TojiProgramProps {
 
 export const TojiProgram = ({ onBack }: TojiProgramProps) => {
   return (
-    <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 bg-background">
       <div className="max-w-6xl mx-auto space-y-8">
         {/* Header */}
         <div className="flex items-center justify-between">
           <Button 
             variant="ghost" 
             onClick={onBack}
-            className="text-gray-400 hover:text-white"
+            className="text-muted-foreground hover:text-foreground"
           >
-            ← Back to Programs
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Programs
           </Button>
           <div className="text-center flex-1">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center mb-4">
+              <Dumbbell className="w-8 h-8 text-black" />
+            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground">
               Toji Fushiguro Training
             </h1>
-            <p className="text-lg text-gray-300 mt-2">V-Taper & High Intensity</p>
+            <p className="text-lg text-muted-foreground mt-2">V-Taper & High Intensity</p>
           </div>
           <div className="w-24"></div>
         </div>
 
         {/* Safety Warning */}
-        <Card className="bg-gradient-to-r from-yellow-900/30 to-red-900/20 border-yellow-600/50">
+        <Card className="fitness-card border-destructive/50 bg-destructive/5">
           <CardHeader>
-            <CardTitle className="text-yellow-400 flex items-center gap-2">
+            <CardTitle className="text-destructive flex items-center gap-2">
               ⚠️ Safety Disclaimer
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-gray-300 mb-4">
+            <p className="text-muted-foreground mb-4">
               This program is designed for experienced individuals. Consult with a healthcare provider 
               before starting any new exercise program. Train within your limits and maintain proper form 
               to prevent injury.
             </p>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-muted-foreground">
               © Discipline Mentality. This content is for educational purposes only.
             </p>
           </CardContent>
         </Card>
 
         {/* Program Overview */}
-        <Card className="bg-gradient-to-r from-blue-900/20 to-blue-800/10 border-blue-600/50">
+        <Card className="fitness-card">
           <CardHeader>
-            <CardTitle className="text-2xl text-blue-400 flex items-center gap-2">
-              <ArrowUp className="w-6 h-6" />
+            <CardTitle className="text-2xl text-cyan-500 flex items-center gap-2">
+              <Target className="w-6 h-6" />
               Program Philosophy
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-gray-300">
+            <p className="text-muted-foreground">
               A high-intensity training program focused on building the perfect V-taper physique, 
               combining strength training with advanced calisthenics inspired by Toji's peak physical conditioning.
             </p>
             <div className="grid md:grid-cols-3 gap-4">
-              <div className="bg-blue-900/20 p-4 rounded-lg">
+              <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
-                  <Target className="w-5 h-5 text-blue-400" />
-                  <h3 className="font-semibold text-blue-400">V-Taper Focus</h3>
+                  <Target className="w-5 h-5 text-cyan-500" />
+                  <h3 className="font-semibold text-cyan-500">V-Taper Focus</h3>
                 </div>
-                <p className="text-gray-300">Wide shoulders, narrow waist for that iconic silhouette</p>
+                <p className="text-muted-foreground">Wide shoulders, narrow waist for that iconic silhouette</p>
               </div>
-              <div className="bg-blue-900/20 p-4 rounded-lg">
+              <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
-                  <Zap className="w-5 h-5 text-blue-400" />
-                  <h3 className="font-semibold text-blue-400">High RPE Training</h3>
+                  <Zap className="w-5 h-5 text-cyan-500" />
+                  <h3 className="font-semibold text-cyan-500">High RPE Training</h3>
                 </div>
-                <p className="text-gray-300">Pushing close to failure for maximum adaptation</p>
+                <p className="text-muted-foreground">Pushing close to failure for maximum adaptation</p>
               </div>
-              <div className="bg-blue-900/20 p-4 rounded-lg">
+              <div className="stat-card">
                 <div className="flex items-center gap-2 mb-2">
-                  <ArrowUp className="w-5 h-5 text-blue-400" />
-                  <h3 className="font-semibold text-blue-400">Functional Strength</h3>
+                  <Dumbbell className="w-5 h-5 text-cyan-500" />
+                  <h3 className="font-semibold text-cyan-500">Functional Strength</h3>
                 </div>
-                <p className="text-gray-300">Real-world applicable strength and mobility</p>
+                <p className="text-muted-foreground">Real-world applicable strength and mobility</p>
               </div>
             </div>
           </CardContent>
@@ -98,7 +102,7 @@ export const TojiProgram = ({ onBack }: TojiProgramProps) => {
 
         {/* Main Navigation Tabs */}
         <Tabs defaultValue="splits" className="w-full">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="grid w-full grid-cols-7 bg-card">
             <TabsTrigger value="splits" className="flex items-center gap-1">
               <Calendar className="w-4 h-4" />
               <span className="hidden sm:inline">Splits</span>
