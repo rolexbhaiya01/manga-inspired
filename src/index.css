@@ -3,91 +3,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Pure Black & Ascetic Design System */
 
 @layer base {
   :root {
-    /* Dark, intense background scheme */
-    --background: 220 15% 8%;  /* Deep charcoal */
-    --foreground: 0 0% 95%;    /* Crisp white */
+    /* Pure black/minimal color scheme */
+    --background: 0 0% 0%;          /* Pure black */
+    --foreground: 0 0% 98%;         /* Pure white */
 
-    --card: 220 15% 12%;       /* Slightly lighter charcoal */
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 3%;               /* Near black for cards */
+    --card-foreground: 0 0% 98%;
 
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Sharp, impactful primary colors */
-    --primary: 0 84% 60%;      /* Vibrant red for intensity */
-    --primary-foreground: 0 0% 98%;
+    /* Minimal accent colors */
+    --primary: 0 0% 98%;           /* White for primary elements */
+    --primary-foreground: 0 0% 0%; /* Black text on white */
 
-    /* Muted secondary for balance */
-    --secondary: 220 15% 18%;  /* Dark grey */
-    --secondary-foreground: 0 0% 88%;
+    --secondary: 0 0% 8%;          /* Very dark gray */
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 220 15% 15%;      /* Darker muted */
-    --muted-foreground: 0 0% 65%;
+    --muted: 0 0% 5%;              /* Dark muted */
+    --muted-foreground: 0 0% 70%;
 
-    /* Electric blue accent */
-    --accent: 210 100% 56%;    /* Electric blue */
+    --accent: 0 0% 12%;            /* Subtle gray accent */
     --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 0% 15%;       /* Dark destructive */
     --destructive-foreground: 0 0% 98%;
 
-    /* Subtle borders and inputs */
-    --border: 220 15% 20%;
-    --input: 220 15% 16%;
-    --ring: 0 84% 60%;         /* Red focus ring */
+    /* Minimal borders and inputs */
+    --border: 0 0% 15%;            /* Subtle border */
+    --input: 0 0% 8%;              /* Dark input */
+    --ring: 0 0% 98%;              /* White focus ring */
 
-    --radius: 0.375rem;        /* Minimal rounding */
+    --radius: 0.25rem;             /* Minimal rounding */
 
-    /* Sidebar colors matching the dark theme */
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 0 0% 88%;
-    --sidebar-primary: 0 84% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 0 0% 88%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 0 84% 60%;
-
-    /* Additional gym-focused colors */
-    --success: 142 76% 36%;    /* Strong green */
-    --warning: 38 92% 50%;     /* Bright orange */
-    --electric: 210 100% 56%;  /* Electric blue */
-    --neon: 154 100% 50%;      /* Bright neon green */
+    /* Sidebar matching the pure black theme */
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 98%;
   }
 
   .dark {
-    /* Dark mode uses the same intense scheme */
-    --background: 220 15% 8%;
-    --foreground: 0 0% 95%;
-    --card: 220 15% 12%;
-    --card-foreground: 0 0% 95%;
-    --popover: 220 15% 10%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 0 84% 60%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 220 15% 18%;
-    --secondary-foreground: 0 0% 88%;
-    --muted: 220 15% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 210 100% 56%;
+    /* Same values for dark mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 5%;
+    --muted-foreground: 0 0% 70%;
+    --accent: 0 0% 12%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 84% 60%;
+    --destructive: 0 0% 15%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 15% 20%;
-    --input: 220 15% 16%;
-    --ring: 0 84% 60%;
-    --sidebar-background: 220 15% 10%;
-    --sidebar-foreground: 0 0% 88%;
-    --sidebar-primary: 0 84% 60%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 0 0% 88%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 0 84% 60%;
+    --border: 0 0% 15%;
+    --input: 0 0% 8%;
+    --ring: 0 0% 98%;
+    --sidebar-background: 0 0% 2%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 98%;
   }
 }
 
@@ -99,11 +91,12 @@
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300; /* Lighter weight for ascetic feel */
   }
 
-  /* Strong, readable typography */
+  /* Clean, minimal typography */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-light tracking-wide; /* Lighter weights, wider tracking */
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
@@ -119,128 +112,98 @@
     @apply text-2xl md:text-3xl;
   }
 
-  /* Ensure high contrast for readability */
+  /* High contrast text */
   p, span, div {
     @apply text-foreground;
+    font-weight: 300;
   }
 }
 
 @layer components {
-  /* Sharp, defined button styles */
+  /* Minimal button styles */
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90 
-           px-6 py-3 rounded-md font-semibold tracking-wide
-           transition-all duration-200 border-0;
+    @apply bg-primary text-primary-foreground hover:bg-primary/80
+           px-8 py-4 border border-border font-light tracking-wide
+           transition-all duration-200;
   }
 
   .btn-accent {
-    @apply bg-accent text-accent-foreground hover:bg-accent/90
-           px-6 py-3 rounded-md font-semibold tracking-wide
-           transition-all duration-200 border-0;
+    @apply bg-transparent text-foreground hover:bg-accent
+           px-8 py-4 border border-border font-light tracking-wide
+           transition-all duration-200;
   }
 
-  /* Sharp card styles */
-  .card-intense {
-    @apply bg-card border border-border rounded-md
-           shadow-lg backdrop-blur-sm;
+  /* Minimal card styles */
+  .card-minimal {
+    @apply bg-card border border-border
+           backdrop-blur-none shadow-none;
   }
 
-  /* Progress indicators with electric accent */
-  .progress-electric {
-    @apply bg-electric/20 border border-electric/50 rounded-md;
+  /* Clean sections */
+  .section-minimal {
+    @apply bg-transparent border-none p-8;
   }
 
-  /* Workout section styling */
-  .workout-section {
-    @apply bg-card/50 border border-border/50 rounded-md p-6
-           backdrop-blur-sm;
+  /* High-contrast text variants */
+  .text-minimal {
+    @apply text-foreground font-light;
   }
 
-  /* High-contrast text for important information */
-  .text-intense {
-    @apply text-foreground font-semibold;
+  .text-emphasis {
+    @apply text-foreground font-normal;
   }
 
-  .text-accent-bright {
-    @apply text-accent font-medium;
+  /* Clean separators */
+  .separator-minimal {
+    @apply border-t border-border/30 w-full;
   }
 
-  /* Clean separation lines */
-  .separator-sharp {
-    @apply border-t border-border w-full;
-  }
-
-  /* Minimalist icons */
+  /* Minimal icons */
   .icon-minimal {
-    @apply w-5 h-5 stroke-2;
+    @apply w-5 h-5 stroke-1;
   }
 
-  /* Navigation styling */
-  .nav-clean {
-    @apply bg-card/80 backdrop-blur-md border-b border-border/50;
+  /* Clean navigation */
+  .nav-minimal {
+    @apply bg-background/95 backdrop-blur-sm border-b border-border/30;
   }
 
-  /* Form elements with sharp design */
-  .input-clean {
-    @apply bg-input border border-border rounded-md px-4 py-2
+  /* Minimal form elements */
+  .input-minimal {
+    @apply bg-input border border-border px-4 py-3
            text-foreground placeholder:text-muted-foreground
-           focus:ring-2 focus:ring-ring focus:border-transparent;
-  }
-
-  /* Status indicators */
-  .status-success {
-    @apply bg-green-500/20 border border-green-500/50 text-green-400;
-  }
-
-  .status-warning {
-    @apply bg-orange-500/20 border border-orange-500/50 text-orange-400;
-  }
-
-  .status-electric {
-    @apply bg-blue-500/20 border border-blue-500/50 text-blue-400;
+           focus:ring-1 focus:ring-ring focus:border-transparent
+           font-light;
   }
 }
 
 @layer utilities {
-  /* Custom background gradients for intensity */
-  .bg-intensity-gradient {
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  /* Remove all gradients, use solid backgrounds */
+  .bg-minimal {
+    @apply bg-background;
   }
 
-  .bg-primary-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
+  .bg-card-minimal {
+    @apply bg-card;
   }
 
-  .bg-accent-gradient {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--electric)) 100%);
+  /* Clean text utilities */
+  .text-minimal-white {
+    @apply text-foreground;
   }
 
-  /* Text gradients for headers */
-  .text-gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Minimal hover effects */
+  .hover-minimal {
+    @apply transition-opacity duration-200 hover:opacity-70;
   }
 
-  .text-gradient-electric {
-    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(var(--electric)) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Clean focus states */
+  .focus-minimal {
+    @apply focus:outline-none focus:ring-1 focus:ring-ring;
   }
 
-  /* Sharp hover effects */
-  .hover-lift {
-    @apply transition-transform duration-200 hover:scale-105;
-  }
-
-  .hover-glow {
-    @apply transition-shadow duration-300 hover:shadow-lg hover:shadow-primary/25;
-  }
-
-  /* Focus states for accessibility */
-  .focus-intense {
-    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+  /* Remove all decorative elements */
+  .no-decoration {
+    @apply shadow-none border-none bg-transparent;
   }
 }

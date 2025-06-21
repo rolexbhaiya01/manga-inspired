@@ -62,12 +62,7 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				},
-				// Custom gym-focused colors
-				electric: 'hsl(var(--electric))',
-				neon: 'hsl(var(--neon))',
-				success: 'hsl(var(--success))',
-				warning: 'hsl(var(--warning))'
+				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -77,52 +72,34 @@ export default {
 			fontFamily: {
 				sans: ['Inter', 'Segoe UI', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
 			},
-			boxShadow: {
-				'intense': '0 10px 30px -5px rgba(0, 0, 0, 0.3)',
-				'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
-				'red-glow': '0 0 20px rgba(239, 68, 68, 0.3)',
+			fontWeight: {
+				'extralight': '200',
+				'light': '300',
+				'normal': '400',
+				'medium': '500',
+			},
+			letterSpacing: {
+				'wide': '0.025em',
+				'wider': '0.05em',
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				},
-				'pulse-glow': {
-					'0%, 100%': {
-						boxShadow: '0 0 5px rgba(59, 130, 246, 0.5)',
-					},
-					'50%': {
-						boxShadow: '0 0 20px rgba(59, 130, 246, 0.8)',
-					},
-				},
-				'slide-up': {
-					'0%': {
-						transform: 'translateY(10px)',
-						opacity: '0',
-					},
-					'100%': {
-						transform: 'translateY(0)',
-						opacity: '1',
-					},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse-glow': 'pulse-glow 2s infinite',
-				'slide-up': 'slide-up 0.3s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out'
 			}
 		}
 	},
