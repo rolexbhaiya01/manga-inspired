@@ -1,13 +1,15 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { MessageCircle, Send, Bot, User, Lightbulb, Utensils, Dumbbell } from 'lucide-react';
+import { MessageCircle, Send, Bot, User, Lightbulb, Utensils, Dumbbell, Loader2 } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 export const AIAssistant = () => {
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [conversation, setConversation] = useState([
     {
       role: 'assistant',
@@ -15,6 +17,7 @@ export const AIAssistant = () => {
       timestamp: new Date().toLocaleTimeString()
     }
   ]);
+  const { toast } = useToast();
 
   const quickSuggestions = [
     {
@@ -34,43 +37,60 @@ export const AIAssistant = () => {
     }
   ];
 
-  const handleSendMessage = () => {
-    if (!message.trim()) return;
+  const handleSendMessage = async () => {
+    if (!message.trim() || isLoading) return;
 
-    // Add user message
     const userMessage = {
       role: 'user' as const,
       content: message,
       timestamp: new Date().toLocaleTimeString()
     };
 
-    // Simulate AI response (in real implementation, this would call an AI API)
-    const aiResponse = {
-      role: 'assistant' as const,
-      content: generateAIResponse(message),
-      timestamp: new Date().toLocaleTimeString()
-    };
-
-    setConversation(prev => [...prev, userMessage, aiResponse]);
+    // Add user message to conversation
+    setConversation(prev => [...prev, userMessage]);
     setMessage('');
-  };
+    setIsLoading(true);
 
-  const generateAIResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
-    
-    if (lowerMessage.includes('food') || lowerMessage.includes('nutrition') || lowerMessage.includes('meal')) {
-      return "For muscle building on the Toji program, focus on:\n\n• **Protein**: 0.8-1g per lb bodyweight (chicken, fish, eggs, dairy)\n• **Carbs**: Complex carbs around workouts (oats, rice, sweet potatoes)\n• **Fats**: 20-30% of calories (nuts, avocado, olive oil)\n• **Timing**: Eat protein every 3-4 hours\n\nSample meal: Grilled chicken breast, quinoa, steamed broccoli, and olive oil dressing. Need specific meal ideas?";
+    try {
+      // Call the edge function
+      const { data, error } = await supabase.functions.invoke('chat-ai', {
+        body: {
+          message: message,
+          conversationHistory: conversation
+        }
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      const aiResponse = {
+        role: 'assistant' as const,
+        content: data.response,
+        timestamp: new Date().toLocaleTimeString()
+      };
+
+      setConversation(prev => [...prev, aiResponse]);
+
+    } catch (error) {
+      console.error('Error calling AI:', error);
+      toast({
+        title: "Error",
+        description: "Failed to get AI response. Please try again.",
+        variant: "destructive",
+      });
+
+      // Add error message to conversation
+      const errorMessage = {
+        role: 'assistant' as const,
+        content: "I'm sorry, I'm having trouble responding right now. Please try again in a moment.",
+        timestamp: new Date().toLocaleTimeString()
+      };
+
+      setConversation(prev => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
-    
-    if (lowerMessage.includes('alternative') || lowerMessage.includes('substitute') || lowerMessage.includes('replace')) {
-      return "Here are some common exercise substitutions for the Toji program:\n\n• **Pull-ups** → Resistance band rows, inverted rows\n• **Barbell rows** → Dumbbell rows, resistance band rows\n• **Squats** → Goblet squats, jump squats, pistol squats\n• **Overhead press** → Pike push-ups, handstand progressions\n• **Dips** → Tricep push-ups, chair dips\n\nWhat specific exercise do you need an alternative for?";
-    }
-    
-    if (lowerMessage.includes('plateau') || lowerMessage.includes('stuck') || lowerMessage.includes('progress')) {
-      return "To break through training plateaus:\n\n• **Change rep ranges**: If doing 8-12, try 6-8 or 12-15\n• **Increase frequency**: Add an extra set or training day\n• **Improve form**: Focus on time under tension\n• **Deload**: Take a lighter week then come back stronger\n• **Nutrition**: Ensure adequate calories and protein\n• **Sleep**: 7-9 hours for optimal recovery\n\nWhich area feels stuck - strength, muscle size, or motivation?";
-    }
-    
-    return "I'd be happy to help! I can assist with:\n\n• **Training modifications** for your equipment/schedule\n• **Nutrition advice** for your specific goals\n• **Exercise form tips** and safety guidance\n• **Progress troubleshooting** when things aren't working\n• **Workout planning** and scheduling\n\nWhat specific aspect of your Toji training would you like guidance on?";
   };
 
   const handleQuickSuggestion = (suggestion: string) => {
@@ -114,6 +134,22 @@ export const AIAssistant = () => {
                   </div>
                 </div>
               ))}
+              
+              {isLoading && (
+                <div className="flex gap-3 justify-start">
+                  <div className="flex gap-3 max-w-[80%]">
+                    <div className="w-8 h-8 rounded-full flex items-center justify-center bg-purple-600">
+                      <Bot className="w-4 h-4" />
+                    </div>
+                    <div className="p-3 rounded-lg bg-gray-700 text-gray-300">
+                      <div className="flex items-center gap-2">
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Thinking...</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </CardContent>
             
             {/* Message Input */}
@@ -124,10 +160,15 @@ export const AIAssistant = () => {
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Ask about workouts, nutrition, or training tips..."
                   className="bg-gray-800 border-gray-700 text-white"
-                  onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                  onKeyPress={(e) => e.key === 'Enter' && !isLoading && handleSendMessage()}
+                  disabled={isLoading}
                 />
-                <Button onClick={handleSendMessage} className="bg-blue-600 hover:bg-blue-700">
-                  <Send className="w-4 h-4" />
+                <Button 
+                  onClick={handleSendMessage} 
+                  className="bg-blue-600 hover:bg-blue-700"
+                  disabled={isLoading || !message.trim()}
+                >
+                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
                 </Button>
               </div>
             </div>
@@ -148,6 +189,7 @@ export const AIAssistant = () => {
                   variant="outline"
                   className="w-full justify-start text-left h-auto p-3 border-gray-600 hover:border-purple-500"
                   onClick={() => handleQuickSuggestion(suggestion.text)}
+                  disabled={isLoading}
                 >
                   <div className="flex items-center gap-3">
                     <div className="text-purple-400">
