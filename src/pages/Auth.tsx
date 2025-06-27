@@ -60,10 +60,14 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-8 bg-background">
       <div className="max-w-md w-full space-y-8">
-        {/* Header */}
+        {/* Header with Animated Dumbbell */}
         <div className="text-center space-y-4">
-          <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center">
-            <Dumbbell className="w-8 h-8 text-black" />
+          <div className="w-16 h-16 mx-auto bg-cyan-500 rounded-2xl flex items-center justify-center animate-pulse">
+            <Dumbbell className="w-8 h-8 text-black animate-bounce" 
+              style={{
+                animation: 'bounce 2s infinite, spin 4s linear infinite'
+              }}
+            />
           </div>
           <h1 className="title-ascetic text-3xl font-light tracking-widest text-foreground">
             ANIME FITNESS
@@ -137,7 +141,14 @@ const Auth = () => {
                 disabled={loading}
                 className="w-full btn-primary accent-ascetic"
               >
-                {loading ? 'Loading...' : (isSignUp ? 'CREATE ACCOUNT' : 'SIGN IN')}
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <Dumbbell className="w-4 h-4 animate-spin" />
+                    Loading...
+                  </div>
+                ) : (
+                  isSignUp ? 'CREATE ACCOUNT' : 'SIGN IN'
+                )}
               </Button>
             </form>
 
@@ -164,6 +175,18 @@ const Auth = () => {
           </div>
         </div>
       </div>
+
+      {/* Custom Keyframes */}
+      <style jsx>{`
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };
